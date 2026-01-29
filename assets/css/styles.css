@@ -1,0 +1,733 @@
+/* ========================================
+   WCSH CPD CENTER - ENHANCED STYLESHEET
+   Modern Blue & Orange Design with Visual Enhancements
+   Email: cpdwcsh@gmail.com
+   Phone: +251-91-615-4691
+   ======================================== */
+
+/* ========================================
+   COLOR PALETTE
+   ======================================== */
+:root {
+    --primary-blue: #1E40AF;        /* Rich Blue - Navbar & Footer */
+    --secondary-blue: #3B82F6;      /* Bright Blue - Accents */
+    --light-blue: #DBEAFE;          /* Light Blue - Backgrounds */
+    --soft-blue: #EFF6FF;           /* Very Light Blue */
+    --primary-orange: #F97316;      /* Vibrant Orange - CTAs */
+    --light-orange: #FED7AA;        /* Light Orange - Highlights */
+    --soft-orange: #FFEDD5;         /* Very Light Orange */
+    --white: #FFFFFF;
+    --text-dark: #1F2937;
+    --text-gray: #6B7280;
+    --border-gray: #E5E7EB;
+    --success-green: #10B981;
+    --error-red: #EF4444;
+}
+
+/* ========================================
+   RESET & BASE STYLES
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: #F9FAFB;
+    font-weight: 500;
+}
+
+/* ========================================
+   TYPOGRAPHY - ENHANCED
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-dark);
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 2.75rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.375rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-blue);
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+a:hover {
+    color: var(--primary-blue);
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   LAYOUT CONTAINERS
+   ======================================== */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.content-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--soft-blue) 0%, var(--light-blue) 50%, var(--soft-orange) 100%);
+}
+
+.section-gray {
+    background-color: var(--white);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.25rem;
+    color: var(--text-dark);
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 1.25rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--secondary-blue), var(--primary-orange));
+    border-radius: 3px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ========================================
+   NAVIGATION BAR - ENHANCED
+   ======================================== */
+
+.navbar {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+    box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.nav-brand:hover {
+    transform: scale(1.05);
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-orange), #EA580C);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: bold;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+}
+
+.brand-text {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-menu li a {
+    color: var(--white);
+    font-weight: 600;
+    padding: 0.5rem 0;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: var(--light-orange);
+    border-bottom-color: var(--primary-orange);
+    transform: translateY(-2px);
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background-color: var(--white);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* ========================================
+   BUTTONS - ENHANCED
+   ======================================== */
+
+.btn {
+    display: inline-block;
+    padding: 0.875rem 2.25rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-orange), #EA580C);
+    color: white;
+    box-shadow: 0 5px 15px rgba(249, 115, 22, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.45);
+}
+
+.btn-outline {
+    background-color: white;
+    color: var(--secondary-blue);
+    border: 3px solid var(--secondary-blue);
+}
+
+.btn-outline:hover {
+    background-color: var(--secondary-blue);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-outline-small {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.95rem;
+    background-color: white;
+    color: var(--secondary-blue);
+    border: 2px solid var(--secondary-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-small:hover {
+    background-color: var(--secondary-blue);
+    color: white;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ========================================
+   HERO SECTION - ENHANCED
+   ======================================== */
+
+.hero {
+    background: linear-gradient(135deg, var(--soft-blue) 0%, var(--light-blue) 50%, var(--soft-orange) 100%);
+    padding: 6rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+}
+
+.hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-logo {
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.hospital-logo {
+    max-width: 170px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 5px 15px rgba(30, 64, 175, 0.25));
+    border-radius: 50%;
+    border: 5px solid var(--primary-orange);
+    transition: transform 0.3s ease;
+}
+
+.hospital-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: var(--primary-blue);
+    margin-bottom: 1.25rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+    font-size: 1.35rem;
+    color: var(--text-gray);
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ========================================
+   ANNOUNCEMENT BANNER
+   ======================================== */
+
+.announcement-banner {
+    background: linear-gradient(90deg, var(--secondary-blue), var(--primary-blue));
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(30, 64, 175, 0.2);
+}
+
+.announcement-banner p {
+    margin: 0;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+/* ========================================
+   PAGE HEADER - ENHANCED
+   ======================================== */
+
+.page-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+    color: white;
+    padding: 4rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(30, 64, 175, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.page-header h1 {
+    color: white;
+    margin-bottom: 0.75rem;
+    font-weight: 900;
+    font-size: 3rem;
+    position: relative;
+}
+
+.page-header p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 600;
+    position: relative;
+}
+
+/* ========================================
+   CARDS & GRIDS - ENHANCED
+   ======================================== */
+
+.highlights-grid,
+.categories-grid,
+.event-types-grid,
+.resource-types-grid,
+.collaboration-areas-grid,
+.benefits-grid,
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.highlight-card,
+.category-card,
+.event-type-card {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    border: 2px solid var(--border-gray);
+}
+
+.highlight-card:hover,
+.category-card:hover,
+.event-type-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+    border-color: var(--secondary-blue);
+}
+
+.highlight-icon,
+.category-icon,
+.event-type-icon {
+    font-size: 3.5rem;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.75rem;
+    background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue));
+    border-radius: 24px;
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.35);
+    transition: all 0.4s ease;
+}
+
+.highlight-card:hover .highlight-icon,
+.category-card:hover .category-icon,
+.event-type-card:hover .event-type-icon {
+    transform: scale(1.15) rotate(8deg);
+    background: linear-gradient(135deg, var(--primary-orange), #EA580C);
+}
+
+.highlight-card h3,
+.category-card h3,
+.event-type-card h3 {
+    color: var(--text-dark);
+    margin-bottom: 0.875rem;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+.highlight-card p,
+.category-card p,
+.event-type-card p {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ========================================
+   MISSION TEXT
+   ======================================== */
+
+.mission-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 1.9;
+    font-weight: 600;
+}
+
+/* ========================================
+   FOOTER - ENHANCED
+   ======================================== */
+
+.footer {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+    color: white;
+    padding: 4rem 0 1.5rem;
+    box-shadow: 0 -5px 20px rgba(30, 64, 175, 0.25);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.footer-column h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    font-weight: 800;
+}
+
+.footer-column p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.footer-links,
+.footer-contact {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-contact li {
+    margin-bottom: 0.65rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--light-orange);
+    padding-left: 5px;
+}
+
+.footer-contact li {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ========================================
+   EVENTS & COURSES
+   ======================================== */
+
+.events-preview-grid,
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.event-card,
+.course-card {
+    background-color: var(--white);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 2px solid var(--border-gray);
+}
+
+.event-card:hover,
+.course-card:hover {
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.2);
+    transform: translateY(-8px);
+    border-color: var(--secondary-blue);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - ENHANCED
+   ======================================== */
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        gap: 0;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+    }
+    
+    .nav-menu li a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .hero-title {
+        font-size: 2.25rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.link-primary {
+    color: var(--secondary-blue);
+    font-weight: 800;
+    transition: color 0.3s ease;
+}
+
+.link-primary:hover {
+    color: var(--primary-blue);
+}
+
+.no-results {
+    text-align: center;
+    padding: 4rem;
+    color: var(--text-gray);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+/* ========================================
+   BACK TO TOP BUTTON
+   ======================================== */
+
+.back-to-top {
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4) !important;
+}
+
+.back-to-top:hover {
+    background: linear-gradient(135deg, var(--primary-orange), #EA580C) !important;
+}

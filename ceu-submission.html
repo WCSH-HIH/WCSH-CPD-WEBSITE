@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CEU Credit Submission - Submit Training Credits for Verification">
+    <title>CEU Credit Submission - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html" class="active">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>CEU Credit Submission</h1>
+            <p>Ward focal persons submit staff training credits for CPD head verification</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 0;">
+        <div class="container">
+            <a href="cpd-system.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary-blue); font-weight: 700; text-decoration: none; padding: 0.75rem 1.5rem; background-color: var(--soft-blue); border-radius: 10px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-blue)';" onmouseout="this.style.backgroundColor='var(--soft-blue)';">
+                ← Back to CPD Systems
+            </a>
+        </div>
+    </section>
+
+    <!-- Form Information -->
+    <section class="section" style="padding-top: 2rem;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; padding: 2rem; background-color: var(--soft-orange); border-radius: 16px; border-left: 4px solid var(--primary-orange); margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-orange); margin-bottom: 1rem; font-weight: 800;">📌 Submission Requirements</h3>
+                <ul style="color: var(--text-gray); margin: 0; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Staff full name and <strong>phone number</strong> (required for dashboard login)</li>
+                    <li style="margin-bottom: 0.5rem;">Ward/Department information</li>
+                    <li style="margin-bottom: 0.5rem;">Training title and date of completion</li>
+                    <li style="margin-bottom: 0.5rem;">Training category (Category 1 or Category 2)</li>
+                    <li style="margin-bottom: 0.5rem;">Number of CEU credits earned</li>
+                    <li style="margin-bottom: 0.5rem;">Certificate of completion (PDF/Image upload)</li>
+                    <li>Training provider/organization</li>
+                </ul>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; padding: 2rem; background-color: var(--soft-blue); border-radius: 16px; border-left: 4px solid var(--secondary-blue); margin-bottom: 2rem;">
+                <h3 style="color: var(--secondary-blue); margin-bottom: 1rem; font-weight: 800;">ℹ️ Workflow</h3>
+                <ul style="color: var(--text-gray); margin: 0; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Step 1:</strong> Ward focal person submits staff credits via this form</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Step 2:</strong> CPD head reviews and verifies the submission</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Step 3:</strong> CPD head adds verified credits to Google Sheet</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Step 4:</strong> Staff can view their credits using phone number on <a href="ceu-dashboard.html" style="color: var(--secondary-blue); font-weight: 700;">CEU Dashboard</a></li>
+                    <li>Processing time: 2-5 business days</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Form Link (Cannot embed - will redirect) -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; background-color: white; padding: 3rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-align: center;">
+                <!-- REPLACE WITH YOUR GOOGLE FORM URL -->
+                <div id="formRedirect">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📝</div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">CEU Credit Submission Form</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.7;">
+                        Click the button below to open the CEU submission form
+                    </p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe-iFcZ7Ddnp9L_4bvCmkskbdSlNK8SLDtOucBM-iwOWTpYbQ/viewform" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1.25rem 3rem; font-size: 1.15rem; text-decoration: none;">
+                        Open Submission Form →
+                    </a>
+                    <p style="color: var(--text-gray); margin-top: 1.5rem; font-size: 0.9rem;">
+                        The form will open in a new tab
+                    </p>
+                </div>
+                
+                <!-- Fallback if form not configured -->
+                <div id="formPlaceholder" style="display: none;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📝</div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">Form Not Yet Configured</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.7;">
+                        The CEU Credit Submission form is being prepared. Please contact the CPD office to submit your credits.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="mailto:cpdwcsh@gmail.com" style="color: var(--secondary-blue); font-weight: 700; text-decoration: none; padding: 1rem 2rem; background-color: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                            📧 Email Us
+                        </a>
+                        <a href="tel:+251916154691" style="color: var(--primary-orange); font-weight: 700; text-decoration: none; padding: 1rem 2rem; background-color: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                            📞 Call Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credit Categories Info -->
+    <section class="section section-gray">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h3 style="text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-weight: 800;">Understanding CPD Categories</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div style="padding: 2rem; background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); border-radius: 16px; border: 2px solid var(--light-blue);">
+                        <h4 style="color: var(--secondary-blue); margin-bottom: 1rem; font-weight: 800; font-size: 1.3rem;">📚 Category One</h4>
+                        <p style="color: var(--text-gray); margin-bottom: 1rem; line-height: 1.7;">Formal, structured, accredited CPD activities</p>
+                        <ul style="color: var(--text-gray); font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
+                            <li style="margin-bottom: 0.5rem;">Accredited trainings & workshops</li>
+                            <li style="margin-bottom: 0.5rem;">Conferences & scientific meetings</li>
+                            <li style="margin-bottom: 0.5rem;">Research & publications</li>
+                            <li>Quality improvement projects</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 2rem; background: linear-gradient(135deg, var(--soft-orange) 0%, white 100%); border-radius: 16px; border: 2px solid var(--light-orange);">
+                        <h4 style="color: var(--primary-orange); margin-bottom: 1rem; font-weight: 800; font-size: 1.3rem;">📋 Category Two</h4>
+                        <p style="color: var(--text-gray); margin-bottom: 1rem; line-height: 1.7;">Informal, practice-based learning activities</p>
+                        <ul style="color: var(--text-gray); font-size: 0.95rem; margin: 0; padding-left: 1.25rem;">
+                            <li style="margin-bottom: 0.5rem;">Seminars & morning sessions</li>
+                            <li style="margin-bottom: 0.5rem;">Grand rounds</li>
+                            <li style="margin-bottom: 0.5rem;">Journal club</li>
+                            <li>Case presentations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; padding: 2rem; background-color: var(--soft-orange); border-radius: 16px;">
+                <h4 style="color: var(--text-dark); margin-bottom: 0.75rem; font-weight: 800;">Questions About Credit Submission?</h4>
+                <p style="color: var(--text-gray); margin: 0;">
+                    Contact CPD Office: <a href="mailto:cpdwcsh@gmail.com" style="color: var(--secondary-blue); font-weight: 700;">cpdwcsh@gmail.com</a> | 
+                    <a href="tel:+251916154691" style="color: var(--primary-orange); font-weight: 700;">+251-91-615-4691</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if form URL is configured
+        window.addEventListener('DOMContentLoaded', function() {
+            const formLink = document.querySelector('a[href*="YOUR_CEU_SUBMISSION_GOOGLE_FORM_URL"]');
+            const formRedirect = document.getElementById('formRedirect');
+            const placeholder = document.getElementById('formPlaceholder');
+            
+            if (formLink && formLink.href.includes('YOUR_CEU_SUBMISSION_GOOGLE_FORM_URL')) {
+                formRedirect.style.display = 'none';
+                placeholder.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

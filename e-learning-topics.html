@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Learning Topics - WCSH CPD Center">
+    <title>E-Learning Topics - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html" class="active">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Training Topics</h1>
+            <p id="welcomeMessage">Welcome! Select a topic to begin your training</p>
+        </div>
+    </section>
+
+    <!-- Logout Button -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 0;">
+        <div class="container">
+            <div style="text-align: right;">
+                <button onclick="logout()" style="padding: 0.75rem 1.5rem; background-color: var(--text-gray); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='#EF4444';" onmouseout="this.style.backgroundColor='var(--text-gray)';">
+                    🚪 Logout
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Topics Grid -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+                
+                <!-- Topic 1: Emergency Medicine -->
+                <div class="topic-card" style="background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15); border: 2px solid var(--light-blue); transition: all 0.4s ease; cursor: pointer;" onclick="goToTopic('emergency-medicine')" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.25)'; this.style.borderColor='var(--secondary-blue)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(59, 130, 246, 0.15)'; this.style.borderColor='var(--light-blue)';">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #EF4444, #DC2626); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);">
+                        <span style="font-size: 2.5rem;">🚑</span>
+                    </div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.4rem;">Emergency Medicine</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.25rem; line-height: 1.7;">Comprehensive emergency care protocols, trauma management, and critical interventions.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--text-gray); font-size: 0.9rem;">
+                        <span>📹 4 Videos</span>
+                        <span>⏱️ ~3 hours</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Start Learning →</button>
+                </div>
+
+                <!-- Topic 2: Maternal Health -->
+                <div class="topic-card" style="background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15); border: 2px solid var(--light-blue); transition: all 0.4s ease; cursor: pointer;" onclick="goToTopic('maternal-health')" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.25)'; this.style.borderColor='var(--secondary-blue)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(59, 130, 246, 0.15)'; this.style.borderColor='var(--light-blue)';">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #EC4899, #DB2777); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);">
+                        <span style="font-size: 2.5rem;">🤰</span>
+                    </div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.4rem;">Maternal Health</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.25rem; line-height: 1.7;">Evidence-based maternal health protocols, obstetric emergencies, and antenatal care.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--text-gray); font-size: 0.9rem;">
+                        <span>📹 4 Videos</span>
+                        <span>⏱️ ~2.5 hours</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Start Learning →</button>
+                </div>
+
+                <!-- Topic 3: Infection Control -->
+                <div class="topic-card" style="background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15); border: 2px solid var(--light-blue); transition: all 0.4s ease; cursor: pointer;" onclick="goToTopic('infection-control')" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.25)'; this.style.borderColor='var(--secondary-blue)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(59, 130, 246, 0.15)'; this.style.borderColor='var(--light-blue)';">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);">
+                        <span style="font-size: 2.5rem;">🦠</span>
+                    </div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.4rem;">Infection Prevention & Control</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.25rem; line-height: 1.7;">Hospital infection prevention, antimicrobial stewardship, and outbreak management.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--text-gray); font-size: 0.9rem;">
+                        <span>📹 4 Videos</span>
+                        <span>⏱️ ~2 hours</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Start Learning →</button>
+                </div>
+
+                <!-- Topic 4: Pediatric Care -->
+                <div class="topic-card" style="background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15); border: 2px solid var(--light-blue); transition: all 0.4s ease; cursor: pointer;" onclick="goToTopic('pediatric-care')" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.25)'; this.style.borderColor='var(--secondary-blue)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(59, 130, 246, 0.15)'; this.style.borderColor='var(--light-blue)';">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #F59E0B, #D97706); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);">
+                        <span style="font-size: 2.5rem;">👶</span>
+                    </div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.4rem;">Pediatric Care</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.25rem; line-height: 1.7;">Pediatric assessment, common childhood illnesses, growth monitoring, and immunization.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--text-gray); font-size: 0.9rem;">
+                        <span>📹 4 Videos</span>
+                        <span>⏱️ ~2.5 hours</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Start Learning →</button>
+                </div>
+
+                <!-- Topic 5: Nursing Practice -->
+                <div class="topic-card" style="background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15); border: 2px solid var(--light-blue); transition: all 0.4s ease; cursor: pointer;" onclick="goToTopic('nursing-practice')" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.25)'; this.style.borderColor='var(--secondary-blue)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(59, 130, 246, 0.15)'; this.style.borderColor='var(--light-blue)';">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #8B5CF6, #7C3AED); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);">
+                        <span style="font-size: 2.5rem;">👩‍⚕️</span>
+                    </div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.4rem;">Evidence-Based Nursing Practice</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.25rem; line-height: 1.7;">Latest nursing research, patient care methodologies, and clinical decision-making.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--text-gray); font-size: 0.9rem;">
+                        <span>📹 4 Videos</span>
+                        <span>⏱️ ~3 hours</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Start Learning →</button>
+                </div>
+
+                <!-- Topic 6: Quality Improvement -->
+                <div class="topic-card" style="background: linear-gradient(135deg, var(--soft-blue) 0%, white 100%); padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(59, 130, 246, 0.15); border: 2px solid var(--light-blue); transition: all 0.4s ease; cursor: pointer;" onclick="goToTopic('quality-improvement')" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(59, 130, 246, 0.25)'; this.style.borderColor='var(--secondary-blue)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(59, 130, 246, 0.15)'; this.style.borderColor='var(--light-blue)';">
+                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #06B6D4, #0891B2); border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);">
+                        <span style="font-size: 2.5rem;">📊</span>
+                    </div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.4rem;">Quality Improvement</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.25rem; line-height: 1.7;">Quality metrics, patient safety protocols, and continuous improvement methodologies.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; color: var(--text-gray); font-size: 0.9rem;">
+                        <span>📹 4 Videos</span>
+                        <span>⏱️ ~2 hours</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; padding: 0.875rem;">Start Learning →</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedName = localStorage.getItem('e_learning_name');
+            const savedEmail = localStorage.getItem('e_learning_email');
+            
+            if (!savedEmail) {
+                // Not logged in, redirect to login
+                window.location.href = 'e-learning.html';
+                return;
+            }
+            
+            // Update welcome message
+            if (savedName) {
+                document.getElementById('welcomeMessage').textContent = `Welcome, ${savedName}! Select a topic to begin your training`;
+            }
+        });
+
+        // Navigate to topic
+        function goToTopic(topicId) {
+            localStorage.setItem('current_topic', topicId);
+            window.location.href = 'e-learning-topic.html?topic=' + topicId;
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('e_learning_name');
+                localStorage.removeItem('e_learning_email');
+                localStorage.removeItem('e_learning_login_time');
+                localStorage.removeItem('current_topic');
+                window.location.href = 'e-learning.html';
+            }
+        }
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

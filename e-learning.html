@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WCSH CPD E-Learning Platform - Access Online Training">
+    <title>E-Learning Login - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html" class="active">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>WCSH CPD E-Learning Platform</h1>
+            <p>Access professional development training anytime, anywhere</p>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section class="section">
+        <div class="container">
+            <div style="max-width: 550px; margin: 0 auto;">
+                <!-- Login Card -->
+                <div style="background-color: white; padding: 3rem; border-radius: 24px; box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2); border: 3px solid var(--secondary-blue);">
+                    
+                    <!-- Icon -->
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);">
+                            <span style="font-size: 3rem;">🎓</span>
+                        </div>
+                    </div>
+
+                    <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">Welcome Back!</h2>
+                    <p style="text-align: center; color: var(--text-gray); margin-bottom: 2.5rem; font-size: 1.05rem;">
+                        Sign in with your Gmail account to access your training modules
+                    </p>
+
+                    <!-- Login Form -->
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <!-- Full Name -->
+                        <div style="margin-bottom: 1.5rem;">
+                            <label for="fullName" style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 700;">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required 
+                                   style="width: 100%; padding: 1rem; border: 2px solid var(--border-gray); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;"
+                                   placeholder="Enter your full name"
+                                   onfocus="this.style.borderColor='var(--secondary-blue)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
+                                   onblur="this.style.borderColor='var(--border-gray)'; this.style.boxShadow='none';">
+                        </div>
+
+                        <!-- Gmail Address -->
+                        <div style="margin-bottom: 2rem;">
+                            <label for="gmailAddress" style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 700;">Gmail Address *</label>
+                            <input type="email" id="gmailAddress" name="gmailAddress" required 
+                                   style="width: 100%; padding: 1rem; border: 2px solid var(--border-gray); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;"
+                                   placeholder="yourname@gmail.com"
+                                   pattern=".*@gmail\.com$"
+                                   title="Please enter a valid Gmail address"
+                                   onfocus="this.style.borderColor='var(--secondary-blue)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
+                                   onblur="this.style.borderColor='var(--border-gray)'; this.style.boxShadow='none';">
+                            <small style="color: var(--text-gray); font-size: 0.85rem; margin-top: 0.25rem; display: block;">
+                                Must be a Gmail address (@gmail.com)
+                            </small>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; margin-bottom: 1rem;">
+                            Access E-Learning Platform
+                        </button>
+
+                        <!-- Loading Message -->
+                        <div id="loadingMessage" style="display: none; text-align: center; padding: 1rem; background-color: var(--soft-blue); border-radius: 12px; margin-top: 1rem;">
+                            <p style="color: var(--secondary-blue); font-weight: 600; margin: 0;">⏳ Verifying credentials...</p>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div id="errorMessage" style="display: none; text-align: center; padding: 1rem; background-color: #FEE2E2; border: 2px solid #EF4444; border-radius: 12px; margin-top: 1rem;">
+                            <p style="color: #991B1B; font-weight: 600; margin: 0;">❌ Please enter a valid Gmail address</p>
+                        </div>
+                    </form>
+
+                    <!-- Info Box -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; background-color: var(--soft-blue); border-radius: 12px; border-left: 4px solid var(--secondary-blue);">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 0.75rem; font-size: 1rem; font-weight: 800;">📌 Important Notes:</h4>
+                        <ul style="color: var(--text-gray); font-size: 0.9rem; margin: 0; padding-left: 1.25rem;">
+                            <li style="margin-bottom: 0.5rem;">Use your registered Gmail account</li>
+                            <li style="margin-bottom: 0.5rem;">Login is tracked for CPD credit purposes</li>
+                            <li style="margin-bottom: 0.5rem;">Complete videos to earn credits</li>
+                            <li>Videos have checkpoints every 15 minutes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background-color: var(--soft-orange); border-radius: 16px;">
+                    <p style="color: var(--text-dark); font-weight: 600; margin-bottom: 0.5rem;">Need help accessing e-learning?</p>
+                    <p style="color: var(--text-gray); font-size: 0.95rem; margin: 0;">
+                        Contact us: <a href="mailto:cpdwcsh@gmail.com" style="color: var(--secondary-blue); font-weight: 700;">cpdwcsh@gmail.com</a> | 
+                        <a href="tel:+251916154691" style="color: var(--secondary-blue); font-weight: 700;">+251-91-615-4691</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Google Apps Script URL for tracking logins
+        // REPLACE WITH YOUR DEPLOYED WEB APP URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxfb_YS-D5wjcZWhXWZDi3C0Hfnl6I2pFNoursvc25muQnUryGNtQjnDQsCOkMsrGeO/exec';
+
+        async function handleLogin(event) {
+            event.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const gmailAddress = document.getElementById('gmailAddress').value.trim().toLowerCase();
+            const loadingMessage = document.getElementById('loadingMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            
+            // Validate Gmail
+            if (!gmailAddress.endsWith('@gmail.com')) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            // Hide error, show loading
+            errorMessage.style.display = 'none';
+            loadingMessage.style.display = 'block';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Signing in...';
+            
+            // Store in localStorage for session
+            localStorage.setItem('e_learning_name', fullName);
+            localStorage.setItem('e_learning_email', gmailAddress);
+            localStorage.setItem('e_learning_login_time', new Date().toISOString());
+            
+            // Track login in Google Sheets (optional)
+            if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL') {
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            fullName: fullName,
+                            gmailAddress: gmailAddress,
+                            timestamp: new Date().toISOString()
+                        })
+                    });
+                } catch (error) {
+                    console.log('Login tracking failed (non-critical):', error);
+                }
+            }
+            
+            // Redirect to topics page after brief delay
+            setTimeout(() => {
+                window.location.href = 'e-learning-topics.html';
+            }, 1000);
+        }
+        
+        // Check if already logged in
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedEmail = localStorage.getItem('e_learning_email');
+            const loginTime = localStorage.getItem('e_learning_login_time');
+            
+            // If logged in within last 24 hours, redirect directly
+            if (savedEmail && loginTime) {
+                const hoursSinceLogin = (new Date() - new Date(loginTime)) / (1000 * 60 * 60);
+                if (hoursSinceLogin < 24) {
+                    window.location.href = 'e-learning-topics.html';
+                }
+            }
+        });
+    </script>
+
+    <!-- Google Apps Script Code (Deploy as Web App) -->
+    <!--
+    
+    To track logins in Google Sheets:
+    
+    1. Create a Google Sheet named "E-Learning Logins"
+    2. Add headers: Timestamp | Full Name | Gmail Address
+    3. Open Script Editor (Extensions → Apps Script)
+    4. Paste this code:
+    
+    function doPost(e) {
+      try {
+        const data = JSON.parse(e.postData.contents);
+        const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('E-Learning Logins');
+        
+        if (!sheet) {
+          return ContentService.createTextOutput(JSON.stringify({
+            'status': 'error',
+            'message': 'Sheet not found'
+          })).setMimeType(ContentService.MimeType.JSON);
+        }
+        
+        sheet.appendRow([
+          data.timestamp,
+          data.fullName,
+          data.gmailAddress
+        ]);
+        
+        return ContentService.createTextOutput(JSON.stringify({
+          'status': 'success'
+        })).setMimeType(ContentService.MimeType.JSON);
+        
+      } catch (error) {
+        return ContentService.createTextOutput(JSON.stringify({
+          'status': 'error',
+          'message': error.toString()
+        })).setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    
+    5. Deploy as Web App:
+       - Click Deploy → New deployment
+       - Type: Web app
+       - Execute as: Me
+       - Who has access: Anyone
+       - Click Deploy
+    
+    6. Copy the Web App URL and replace GOOGLE_SCRIPT_URL above
+    
+    -->
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

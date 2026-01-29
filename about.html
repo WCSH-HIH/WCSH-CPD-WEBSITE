@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About WCSH CPD Center - Vision, Mission, Governance">
+    <title>About CPD Center - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .content-section {
+            margin-bottom: 3rem;
+        }
+        .content-section h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.25rem;
+        }
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About WCSH CPD Center</h1>
+            <p>Building excellence in healthcare through continuous professional development</p>
+        </div>
+    </section>
+
+    <!-- Image Gallery Slider -->
+    <section class="section">
+        <div class="container">
+            <div class="gallery-container" style="max-width: 800px; margin: 0 auto; position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2); border: 3px solid var(--secondary-blue);">
+                <div class="gallery-slider" id="gallerySlider" style="position: relative; width: 100%; height: 450px; background-color: var(--text-dark);">
+                    <div class="gallery-slide active" style="display: block; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery1.jpg" alt="WCSH CPD Training" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=CPD+Training+Session'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery2.jpg" alt="Healthcare Workshop" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Healthcare+Workshop'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery3.jpg" alt="Medical Conference" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Medical+Conference'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery4.jpg" alt="CPD Certificate" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=CPD+Certificates'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery5.jpg" alt="Team Training" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Team+Training'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery6.jpg" alt="Clinical Skills" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Clinical+Skills'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery7.jpg" alt="Research Presentation" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Research+Presentation'">
+                    </div>
+                    <div class="gallery-slide" style="display: none; width: 100%; height: 100%;">
+                        <img src="assets/images/gallery8.jpg" alt="Graduation" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://via.placeholder.com/800x450/3B82F6/FFFFFF?text=Graduation+Ceremony'">
+                    </div>
+                </div>
+                
+                <button onclick="changeSlide(-1)" style="position: absolute; top: 50%; left: 1rem; transform: translateY(-50%); background-color: rgba(59, 130, 246, 0.9); color: white; border: none; padding: 1rem 1.25rem; cursor: pointer; font-size: 1.5rem; border-radius: 8px; z-index: 10;">❮</button>
+                <button onclick="changeSlide(1)" style="position: absolute; top: 50%; right: 1rem; transform: translateY(-50%); background-color: rgba(59, 130, 246, 0.9); color: white; border: none; padding: 1rem 1.25rem; cursor: pointer; font-size: 1.5rem; border-radius: 8px; z-index: 10;">❯</button>
+                
+                <div style="position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.75rem; z-index: 10;">
+                    <span class="gallery-dot active" onclick="currentSlide(1)" style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--primary-orange); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(2)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(3)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(4)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(5)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(6)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(7)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                    <span class="gallery-dot" onclick="currentSlide(8)" style="width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer;"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="section">
+        <div class="container content-container">
+            <section class="content-section">
+                <h2>Background</h2>
+                <p>Worabe Comprehensive Specialized Hospital CPD Center is one of the pioneer CPD centers in the country, established in 2014 E.C. The center was founded through a strong collaboration between Worabe Comprehensive Specialized Hospital and JSI/10K, one of the hospital's key strategic partners.</p>
+                <p>The WCSH CPD Center was established to address the growing need for systematic, high-quality continuing education for healthcare professionals in our region. As a comprehensive specialized hospital, WCSH recognized that excellence in patient care requires continuous learning and professional development.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Mission</h2>
+                <p>To improve the skills, knowledge and attitude of health care providers in all health institutions of the region and the country by providing accessible, evidence-based continuing professional development programs that enhance clinical competencies, promote patient safety, and support career advancement.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Vision</h2>
+                <p>To be a leading center of excellence in continuous professional development, driving healthcare quality and innovation across Ethiopia through fostering a culture of continuous learning, innovation and evidence-based practice, ensuring the highest standards of patient care, clinical expertise, and interdisciplinary collaboration among healthcare professionals.</p>
+            </section>
+
+            <section class="content-section">
+                <h2>Core Values</h2>
+                <div style="background-color: var(--soft-blue); padding: 2rem; border-radius: 16px; border-left: 4px solid var(--secondary-blue);">
+                    <p style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-blue);"><strong style="color: var(--secondary-blue);">Prioritizing Customers:</strong> We place the needs and satisfaction of our learners and stakeholders at the center of all our services.</p>
+                    <p style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-blue);"><strong style="color: var(--secondary-blue);">Quality Training:</strong> We deliver high-quality, evidence-based training that meets national and international standards.</p>
+                    <p style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-blue);"><strong style="color: var(--secondary-blue);">Teamwork:</strong> We foster collaboration and mutual respect to achieve shared goals and excellence.</p>
+                    <p style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-blue);"><strong style="color: var(--secondary-blue);">Partnership:</strong> We build strong, sustainable partnerships to enhance impact and resource sharing.</p>
+                    <p style="padding: 0.75rem 0; border-bottom: 1px solid var(--light-blue);"><strong style="color: var(--secondary-blue);">Capacity Building:</strong> We are committed to strengthening skills, knowledge, and institutional performance.</p>
+                    <p style="padding: 0.75rem 0; margin-bottom: 0;"><strong style="color: var(--secondary-blue);">Good Governance:</strong> We uphold transparency, integrity, and effective leadership in all operations.</p>
+                </div>
+            </section>
+
+            <section class="content-section">
+                <h2>Our Collaborative Approach</h2>
+                <p>We believe in the power of collaboration. The CPD Center actively partners with universities, research institutions, professional associations, and other healthcare facilities to deliver comprehensive, high-quality educational programs.</p>
+                <p style="margin-top: 1.5rem;"><a href="partnerships.html" class="link-primary">Learn more about our partnerships →</a></p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlideIndex = 1;
+        showSlide(currentSlideIndex);
+
+        function changeSlide(n) {
+            showSlide(currentSlideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(currentSlideIndex = n);
+        }
+
+        function showSlide(n) {
+            const slides = document.getElementsByClassName("gallery-slide");
+            const dots = document.getElementsByClassName("gallery-dot");
+            
+            if (n > slides.length) { currentSlideIndex = 1; }
+            if (n < 1) { currentSlideIndex = slides.length; }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+                dots[i].style.width = "12px";
+                dots[i].style.borderRadius = "50%";
+            }
+            
+            slides[currentSlideIndex - 1].style.display = "block";
+            dots[currentSlideIndex - 1].style.backgroundColor = "#F97316";
+            dots[currentSlideIndex - 1].style.width = "30px";
+            dots[currentSlideIndex - 1].style.borderRadius = "6px";
+        }
+
+        setInterval(() => { changeSlide(1); }, 5000);
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

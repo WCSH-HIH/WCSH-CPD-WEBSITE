@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CEU Credits Dashboard - View Your Accumulated CPD Credits">
+    <title>CEU Dashboard - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html" class="active">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>CEU Credits Dashboard</h1>
+            <p>View your accumulated CEU credits and training history</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 0;">
+        <div class="container">
+            <a href="cpd-system.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary-blue); font-weight: 700; text-decoration: none; padding: 0.75rem 1.5rem; background-color: var(--soft-blue); border-radius: 10px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-blue)';" onmouseout="this.style.backgroundColor='var(--soft-blue)';">
+                ← Back to CPD Systems
+            </a>
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section id="loginSection" class="section">
+        <div class="container">
+            <div style="max-width: 550px; margin: 0 auto; background-color: white; padding: 3rem; border-radius: 24px; box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2); border: 3px solid var(--secondary-blue);">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary-orange), #EA580C); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);">
+                        <span style="font-size: 3rem;">📊</span>
+                    </div>
+                </div>
+                <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">Access Your Dashboard</h2>
+                <p style="text-align: center; color: var(--text-gray); margin-bottom: 2.5rem; font-size: 1.05rem;">
+                    Enter your phone number to view your CEU credits
+                </p>
+                <div style="margin-bottom: 2rem;">
+                    <label for="searchInput" style="display: block; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 700;">Phone Number *</label>
+                    <input type="tel" id="searchInput" placeholder="0916154691 or +251916154691" 
+                           style="width: 100%; padding: 1rem; border: 2px solid var(--border-gray); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;"
+                           onfocus="this.style.borderColor='var(--secondary-blue)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
+                           onblur="this.style.borderColor='var(--border-gray)'; this.style.boxShadow='none';">
+                    <small style="color: var(--text-gray); font-size: 0.85rem; margin-top: 0.25rem; display: block;">
+                        Enter the phone number you provided during registration
+                    </small>
+                </div>
+                <button onclick="loadCEUDashboard()" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem;">
+                    View My Credits
+                </button>
+                <div id="loadingMessage" style="display: none; text-align: center; padding: 1rem; background-color: var(--soft-blue); border-radius: 12px; margin-top: 1rem;">
+                    <p style="color: var(--secondary-blue); font-weight: 600; margin: 0;">⏳ Loading your credits...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Results (Hidden Initially) -->
+    <section id="dashboardResults" class="section" style="display: none;">
+        <div class="container">
+            <!-- Welcome Message -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="color: var(--text-dark); font-weight: 800; margin-bottom: 0.5rem;">Welcome, <span id="participantName"></span>!</h2>
+                <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Here's your CPD credit summary</p>
+                <button onclick="logout()" style="padding: 0.75rem 1.5rem; background-color: var(--text-gray); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer;">
+                    🚪 Logout
+                </button>
+            </div>
+
+            <!-- Summary Cards -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                <div style="background: linear-gradient(135deg, var(--secondary-blue), var(--primary-blue)); padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎓</div>
+                    <h3 style="color: white; font-size: 3rem; font-weight: 900; margin-bottom: 0.25rem;" id="totalCredits">0</h3>
+                    <p style="color: rgba(255, 255, 255, 0.95); margin: 0; font-weight: 600;">Total CEU Credits</p>
+                </div>
+                <div style="background: linear-gradient(135deg, var(--primary-orange), #EA580C); padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">✅</div>
+                    <h3 style="color: white; font-size: 3rem; font-weight: 900; margin-bottom: 0.25rem;" id="totalSubmissions">0</h3>
+                    <p style="color: rgba(255, 255, 255, 0.95); margin: 0; font-weight: 600;">Verified Trainings</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #10B981, #059669); padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">⏳</div>
+                    <h3 style="color: white; font-size: 3rem; font-weight: 900; margin-bottom: 0.25rem;" id="pendingCount">0</h3>
+                    <p style="color: rgba(255, 255, 255, 0.95); margin: 0; font-weight: 600;">Pending Review</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #8B5CF6, #7C3AED); padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);">
+                    <div style="font-size: 3rem; margin-bottom: 0.5rem;">📅</div>
+                    <h3 style="color: white; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.25rem;" id="lastUpdate">N/A</h3>
+                    <p style="color: rgba(255, 255, 255, 0.95); margin: 0; font-weight: 600;">Last Updated</p>
+                </div>
+            </div>
+
+            <!-- Category Breakdown -->
+            <div style="background-color: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); margin-bottom: 3rem;">
+                <h3 style="color: var(--text-dark); margin-bottom: 2rem; font-weight: 800; font-size: 1.5rem;">CEU by Activity Type</h3>
+                <div id="categoryBreakdown"></div>
+            </div>
+
+            <!-- Training History -->
+            <div style="background-color: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); margin-bottom: 3rem;">
+                <h3 style="color: var(--text-dark); margin-bottom: 2rem; font-weight: 800; font-size: 1.5rem;">Training History</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background-color: var(--soft-blue); border-bottom: 2px solid var(--secondary-blue);">
+                                <th style="padding: 1rem; text-align: left; color: var(--text-dark); font-weight: 800;">Date</th>
+                                <th style="padding: 1rem; text-align: left; color: var(--text-dark); font-weight: 800;">Topic</th>
+                                <th style="padding: 1rem; text-align: left; color: var(--text-dark); font-weight: 800;">Activity Type</th>
+                                <th style="padding: 1rem; text-align: center; color: var(--text-dark); font-weight: 800;">CEU</th>
+                                <th style="padding: 1rem; text-align: center; color: var(--text-dark); font-weight: 800;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainingHistoryBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Print Button -->
+            <div style="text-align: center;">
+            </div>
+        </div>
+    </section>
+
+    <!-- No Data Message (Hidden Initially) -->
+    <section id="noDataMessage" class="section" style="display: none;">
+        <div class="container">
+            <div style="text-align: center; padding: 4rem 2rem; background-color: var(--soft-blue); border-radius: 20px; max-width: 700px; margin: 0 auto;">
+                <div style="font-size: 5rem; margin-bottom: 1.5rem;">📭</div>
+                <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.75rem;">No Credits Found</h3>
+                <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.7; font-size: 1.1rem;">
+                    We couldn't find any verified CEU credits for this email address. 
+                    Make sure you've submitted credits using the same Gmail address.
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <button onclick="tryAgain()" class="btn btn-primary">
+                        Try Different Email
+                    </button>
+                    <a href="ceu-submission.html" class="btn btn-outline">
+                        Submit Credits
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Debug Info (Hidden) -->
+    <div id="debugInfo" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 2rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 600px; width: 90%; z-index: 10000;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h3 style="color: var(--text-dark); margin: 0; font-weight: 800;">System Message</h3>
+            <button onclick="closeDebug()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-gray);">✕</button>
+        </div>
+        <div id="debugContent" style="color: var(--text-gray); line-height: 1.7;"></div>
+    </div>
+
+    <!-- National System Integration -->
+    <div id="nationalSystemData" style="display: none;">
+        <input type="hidden" id="nationalTotalCredits">
+        <input type="hidden" id="nationalEmailDisplay">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/ceu-dashboard.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

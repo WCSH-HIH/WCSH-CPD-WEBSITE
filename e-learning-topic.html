@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-Learning Video Player - WCSH CPD Center">
+    <title>Video Training - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Fixed video player container - prevents overflow */
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        /* Responsive aspect ratio for video */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Checkpoint overlay */
+        .checkpoint-overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 64, 175, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2rem;
+        }
+        
+        .checkpoint-overlay.active {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html" class="active">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 id="topicTitle">Training Video</h1>
+            <p id="topicDescription">Complete the video to earn CPD credits</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 0;">
+        <div class="container">
+            <a href="e-learning-topics.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary-blue); font-weight: 700; text-decoration: none; padding: 0.75rem 1.5rem; background-color: var(--soft-blue); border-radius: 10px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-blue)';" onmouseout="this.style.backgroundColor='var(--soft-blue)';">
+                ← Back to Topics
+            </a>
+        </div>
+    </section>
+
+    <!-- Video Player Section -->
+    <section class="section">
+        <div class="container">
+            <!-- Video Container with Fixed Height -->
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <div id="player"></div>
+                </div>
+                
+                <!-- Checkpoint Overlay -->
+                <div id="checkpointOverlay" class="checkpoint-overlay">
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 4rem; margin-bottom: 1.5rem;">⏸️</div>
+                        <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem; font-weight: 800;">15-Minute Checkpoint</h2>
+                        <p style="font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.95;">Take a moment to reflect on what you've learned</p>
+                        <button id="continueBtn" style="padding: 1.25rem 3rem; background: linear-gradient(135deg, var(--primary-orange), #EA580C); color: white; border: none; border-radius: 12px; font-size: 1.15rem; font-weight: 800; cursor: pointer; box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">
+                            Continue Learning →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div style="max-width: 1000px; margin: 2rem auto; padding: 2rem; background-color: white; border-radius: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+                <h3 style="color: var(--text-dark); margin-bottom: 1.25rem; font-weight: 800;">Learning Progress</h3>
+                <div style="background-color: var(--light-blue); height: 12px; border-radius: 6px; overflow: hidden; margin-bottom: 1rem;">
+                    <div id="progressBar" style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--secondary-blue), var(--primary-orange)); transition: width 0.3s ease;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span id="progressText" style="color: var(--text-gray); font-weight: 600;">0% Complete</span>
+                    <span id="checkpointsText" style="color: var(--secondary-blue); font-weight: 700;">Checkpoints: 0/4</span>
+                </div>
+            </div>
+
+            <!-- Video List -->
+            <div style="max-width: 1000px; margin: 2rem auto;">
+                <h3 style="color: var(--text-dark); margin-bottom: 1.5rem; font-weight: 800;">Topic Videos</h3>
+                <div id="videoList"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        // Video database - REPLACE WITH YOUR ACTUAL YOUTUBE VIDEO IDs
+        const videoDatabase = {
+            'emergency-medicine': {
+                title: 'Emergency Medicine',
+                description: 'Comprehensive emergency care protocols and trauma management',
+                videos: [
+                    { id: '11aOkT0lYhU', title: 'Initial Assessment in Trauma Patients', duration: '37:43' },
+                    { id: 'lShbVnvKbs0', title: 'Airway Evaluation and Management in Trauma', duration: '25:23' },
+                    { id: 'McHm7pSnYd0', title: 'Respiratory Emergencies', duration: '1:25:47' },
+                    { id: 'r14sqgk2d0Q', title: 'IV Fluid Resuscitation', duration: '21:08' },
+                    { id: 'jcGlaj22HSE', title: 'Trauma Management', duration: '19:43' },
+                    { id: 'jDzfYPZp1JE', title: 'Heart Failure Review ', duration: '40:12' },
+                    { id: 'YEvSHUgmVEs', title: 'Adult Med/Surg: Stroke Lecture', duration: '1:10:03' },
+                    { id: 'T9G6a2gAZ-E', title: 'Approach to Obstetric Emergencies', duration: '55:26' },
+                    { id: 'be4hVF9Xuow', title: 'Endocrine Emergencies', duration: '55:51' },
+                    { id: 'j0OXkqoffx8', title: 'Acute Appendicitis Simplified', duration: '32:33' }
+                ]
+            },
+            'maternal-health': {
+                title: 'Maternal Health',
+                description: 'Evidence-based maternal health protocols and obstetric care',
+                videos: [
+                    { id: '7x5oLLD8T_U', title: 'Maternal Health Lecture', duration: '30:40' },
+                    { id: 'XTZ54DHRsNA', title: 'Antenatal Care || ANC', duration: '40:32' },
+                    { id: 'dDFLsEKqItU', title: 'Labor and Delivery Management', duration: '51:24' },
+                    { id: 'XQNOYdf1ylI', title: 'Abnormal Pregnancy | By Dr. Dawit Mesfin', duration: '1:37:51' },
+                    { id: '9_iKbRvWPZk', title: 'CEASAREAN DELIVERY', duration: '21:31' },
+                    { id: 'oHedP7P-3jY', title: 'Postpartum Care', duration: '1:01:19' }
+                ]
+            },
+            'infection-control': {
+                title: 'Infection Prevention & Control',
+                description: 'Hospital infection prevention and antimicrobial stewardship',
+                videos: [
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_9', title: 'Hand Hygiene and PPE', duration: '35:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_10', title: 'Antimicrobial Stewardship', duration: '42:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_11', title: 'Outbreak Management', duration: '40:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_12', title: 'Biosafety Protocols', duration: '38:00' }
+                ]
+            },
+            'pediatric-care': {
+                title: 'Pediatric Care',
+                description: 'Comprehensive pediatric assessment and childhood illness management',
+                videos: [
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_13', title: 'Pediatric Assessment', duration: '40:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_14', title: 'Common Childhood Illnesses', duration: '45:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_15', title: 'Growth and Development Monitoring', duration: '38:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_16', title: 'Pediatric Immunization', duration: '35:00' }
+                ]
+            },
+            'nursing-practice': {
+                title: 'Evidence-Based Nursing Practice',
+                description: 'Latest nursing research and clinical decision-making',
+                videos: [
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_17', title: 'Nursing Research Methods', duration: '48:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_18', title: 'Patient Care Methodologies', duration: '45:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_19', title: 'Clinical Decision Making', duration: '42:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_20', title: 'Professional Standards', duration: '40:00' }
+                ]
+            },
+            'quality-improvement': {
+                title: 'Quality Improvement',
+                description: 'Quality metrics and patient safety protocols',
+                videos: [
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_21', title: 'QI Fundamentals', duration: '38:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_22', title: 'Patient Safety Protocols', duration: '42:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_23', title: 'Data-Driven Improvement', duration: '45:00' },
+                    { id: 'YOUR_YOUTUBE_VIDEO_ID_24', title: 'Implementing Change', duration: '40:00' }
+                ]
+            }
+        };
+
+        let player;
+        let currentTopic;
+        let currentVideoIndex = 0;
+        let checkpointsPassed = 0;
+        let lastCheckpointTime = 0;
+        const CHECKPOINT_INTERVAL = 900; // 15 minutes = 900 seconds
+
+        // Get topic from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const topicId = urlParams.get('topic') || localStorage.getItem('current_topic');
+
+        if (!topicId || !videoDatabase[topicId]) {
+            window.location.href = 'e-learning-topics.html';
+        }
+
+        currentTopic = videoDatabase[topicId];
+
+        // Update page with topic info
+        document.getElementById('topicTitle').textContent = currentTopic.title;
+        document.getElementById('topicDescription').textContent = currentTopic.description;
+
+        // YouTube IFrame API ready
+        function onYouTubeIframeAPIReady() {
+            loadVideo(0);
+        }
+
+        function loadVideo(index) {
+            currentVideoIndex = index;
+            const videoId = currentTopic.videos[index].id;
+            
+            if (player) {
+                player.loadVideoById(videoId);
+            } else {
+                player = new YT.Player('player', {
+                    videoId: videoId,
+                    playerVars: {
+                        'autoplay': 1,
+                        'controls': 1,
+                        'rel': 0,
+                        'modestbranding': 1
+                    },
+                    events: {
+                        'onStateChange': onPlayerStateChange
+                    }
+                });
+            }
+            
+            renderVideoList();
+            checkpointsPassed = 0;
+            lastCheckpointTime = 0;
+            updateProgress();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                startCheckpointMonitoring();
+            }
+        }
+
+        function startCheckpointMonitoring() {
+            setInterval(() => {
+                if (player && player.getPlayerState() == YT.PlayerState.PLAYING) {
+                    const currentTime = player.getCurrentTime();
+                    
+                    // Check if 15 minutes have passed since last checkpoint
+                    if (currentTime - lastCheckpointTime >= CHECKPOINT_INTERVAL) {
+                        pauseForCheckpoint();
+                        lastCheckpointTime = currentTime;
+                        checkpointsPassed++;
+                        updateProgress();
+                    }
+                }
+            }, 1000);
+        }
+
+        function pauseForCheckpoint() {
+            player.pauseVideo();
+            document.getElementById('checkpointOverlay').classList.add('active');
+        }
+
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            document.getElementById('checkpointOverlay').classList.remove('active');
+            player.playVideo();
+        });
+
+        function updateProgress() {
+            const totalVideos = currentTopic.videos.length;
+            const progressPercent = ((currentVideoIndex + 1) / totalVideos) * 100;
+            const totalCheckpoints = totalVideos * 4; // Estimate 4 checkpoints per video
+            
+            document.getElementById('progressBar').style.width = progressPercent + '%';
+            document.getElementById('progressText').textContent = Math.round(progressPercent) + '% Complete';
+            document.getElementById('checkpointsText').textContent = `Checkpoints: ${checkpointsPassed}/${totalCheckpoints}`;
+        }
+
+        function renderVideoList() {
+            const videoList = document.getElementById('videoList');
+            videoList.innerHTML = currentTopic.videos.map((video, index) => `
+                <div onclick="loadVideo(${index})" style="background-color: ${index === currentVideoIndex ? 'var(--soft-blue)' : 'white'}; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem; cursor: pointer; border: 2px solid ${index === currentVideoIndex ? 'var(--secondary-blue)' : 'var(--border-gray)'}; transition: all 0.3s ease;" onmouseover="if(${index !== currentVideoIndex}) this.style.backgroundColor='var(--soft-blue)';" onmouseout="if(${index !== currentVideoIndex}) this.style.backgroundColor='white';">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="font-size: 1.5rem;">${index === currentVideoIndex ? '▶️' : '📹'}</span>
+                            <div>
+                                <h4 style="color: var(--text-dark); margin: 0; font-weight: 700; font-size: 1.05rem;">${video.title}</h4>
+                                <p style="color: var(--text-gray); margin: 0; font-size: 0.9rem; margin-top: 0.25rem;">Duration: ${video.duration}</p>
+                            </div>
+                        </div>
+                        ${index === currentVideoIndex ? '<span style="color: var(--secondary-blue); font-weight: 800;">Now Playing</span>' : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Check login status
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedEmail = localStorage.getItem('e_learning_email');
+            if (!savedEmail) {
+                window.location.href = 'e-learning.html';
+            }
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

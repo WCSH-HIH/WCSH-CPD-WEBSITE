@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QI Project Registration - Register Quality Improvement Projects">
+    <title>QI Projects - WCSH CPD Center</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="nav-brand">
+                <div class="logo">W</div>
+                <span class="brand-text">WCSH CPD Center</span>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About CPD</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="e-learning.html">E-Learning</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="cpd-system.html" class="active">CPD System</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Quality Improvement Project Registration</h1>
+            <p>Register QI projects to earn CPD credits and improve patient care</p>
+        </div>
+    </section>
+
+    <!-- Back Button -->
+    <section class="section" style="padding-top: 2rem; padding-bottom: 0;">
+        <div class="container">
+            <a href="cpd-system.html" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary-blue); font-weight: 700; text-decoration: none; padding: 0.75rem 1.5rem; background-color: var(--soft-blue); border-radius: 10px; transition: all 0.3s ease;" onmouseover="this.style.backgroundColor='var(--light-blue)';" onmouseout="this.style.backgroundColor='var(--soft-blue)';">
+                ← Back to CPD Systems
+            </a>
+        </div>
+    </section>
+
+    <!-- QI Information -->
+    <section class="section" style="padding-top: 2rem;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; padding: 2rem; background-color: var(--soft-blue); border-radius: 16px; border-left: 4px solid var(--secondary-blue); margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-weight: 800;">📌 QI Project Requirements</h3>
+                <ul style="color: var(--text-gray); margin: 0; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;">Clear problem statement and project aim</li>
+                    <li style="margin-bottom: 0.5rem;">SMART objectives (Specific, Measurable, Achievable, Relevant, Time-bound)</li>
+                    <li style="margin-bottom: 0.5rem;">Baseline data and improvement metrics</li>
+                    <li style="margin-bottom: 0.5rem;">PDSA (Plan-Do-Study-Act) cycle methodology</li>
+                    <li style="margin-bottom: 0.5rem;">Project team members and roles</li>
+                    <li>Expected timeline and milestones</li>
+                </ul>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; padding: 2rem; background-color: var(--soft-orange); border-radius: 16px; border-left: 4px solid var(--primary-orange); margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-orange); margin-bottom: 1rem; font-weight: 800;">🎯 CPD Credits for QI Projects</h3>
+                <ul style="color: var(--text-gray); margin: 0; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>Category 1 Activity:</strong> QI projects earn substantial CPD credits</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Credit Calculation:</strong> Based on project scope, duration, and impact</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Documentation Required:</strong> Proposal, implementation records, final report</li>
+                    <li>Credits awarded upon project completion and review</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Form Link (Cannot embed - will redirect) -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; background-color: white; padding: 3rem; border-radius: 20px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-align: center;">
+                <h3 style="color: var(--text-dark); margin-bottom: 1.5rem; font-weight: 800;">Register Your QI Project</h3>
+                
+                <!-- REPLACE WITH YOUR GOOGLE FORM URL -->
+                <div id="formRedirect">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📝</div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">QI Project Registration Form</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.7;">
+                        Click the button below to open the QI project registration form
+                    </p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdw1iISTGvrgsHHcw2NvIyf-tY0oOTmWBMz_py3imIwxVzI7Q/viewform" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1.25rem 3rem; font-size: 1.15rem; text-decoration: none;">
+                        Open Registration Form →
+                    </a>
+                    <p style="color: var(--text-gray); margin-top: 1.5rem; font-size: 0.9rem;">
+                        The form will open in a new tab
+                    </p>
+                </div>
+                
+                <!-- Fallback if form not configured -->
+                <div id="formPlaceholder" style="display: none;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📝</div>
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">Form Not Yet Configured</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 2rem; line-height: 1.7;">
+                        The QI Project Registration form is being prepared. Please contact the CPD office to register your project.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="mailto:cpdwcsh@gmail.com" style="color: var(--secondary-blue); font-weight: 700; text-decoration: none; padding: 1rem 2rem; background-color: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                            📧 Email Us
+                        </a>
+                        <a href="tel:+251916154691" style="color: var(--primary-orange); font-weight: 700; text-decoration: none; padding: 1rem 2rem; background-color: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);">
+                            📞 Call Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QI Resources -->
+    <section class="section section-gray">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h3 style="text-align: center; color: var(--text-dark); margin-bottom: 2rem; font-weight: 800;">QI Project Resources</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div style="padding: 2rem; background-color: white; border-radius: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 2px solid var(--light-blue);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📚</div>
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">QI Methodology Guide</h4>
+                        <p style="color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.95rem;">Step-by-step guide to planning and implementing quality improvement projects</p>
+                        <a href="resources.html" style="color: var(--secondary-blue); font-weight: 700; text-decoration: none;">Download Guide →</a>
+                    </div>
+                    <div style="padding: 2rem; background-color: white; border-radius: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 2px solid var(--light-blue);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">PDSA Templates</h4>
+                        <p style="color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.95rem;">Ready-to-use templates for Plan-Do-Study-Act cycles</p>
+                        <a href="resources.html" style="color: var(--secondary-blue); font-weight: 700; text-decoration: none;">Download Templates →</a>
+                    </div>
+                    <div style="padding: 2rem; background-color: white; border-radius: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); border: 2px solid var(--light-blue);">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📈</div>
+                        <h4 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800;">Measurement Tools</h4>
+                        <p style="color: var(--text-gray); margin-bottom: 1.5rem; font-size: 0.95rem;">Data collection forms and analysis spreadsheets</p>
+                        <a href="resources.html" style="color: var(--secondary-blue); font-weight: 700; text-decoration: none;">Download Tools →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; padding: 3rem; background: linear-gradient(135deg, var(--soft-blue) 0%, var(--soft-orange) 100%); border-radius: 20px;">
+                <h3 style="color: var(--text-dark); margin-bottom: 1rem; font-weight: 800; font-size: 1.75rem;">Need Support with Your QI Project?</h3>
+                <p style="color: var(--text-gray); margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.7;">
+                    The CPD office provides mentorship and technical support for quality improvement initiatives
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="mailto:cpdwcsh@gmail.com" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--secondary-blue); font-weight: 700; padding: 1rem 2rem; background-color: white; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        📧 cpdwcsh@gmail.com
+                    </a>
+                    <a href="tel:+251916154691" style="display: inline-flex; align-items: center; gap: 0.5rem; color: var(--primary-orange); font-weight: 700; padding: 1rem 2rem; background-color: white; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+                        📞 +251-91-615-4691
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>WCSH CPD Center</h3>
+                    <p>Advancing healthcare excellence through continuous professional development.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>Worabe, Ethiopia</li>
+                        <li>cpdwcsh@gmail.com</li>
+                        <li>+251-91-615-4691</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="partnerships.html">Partnerships</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Worabe Comprehensive Specialized Hospital CPD Center. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Check if form URL is configured
+        window.addEventListener('DOMContentLoaded', function() {
+            const formLink = document.querySelector('a[href*="YOUR_QI_PROJECTS_GOOGLE_FORM_URL"]');
+            const formRedirect = document.getElementById('formRedirect');
+            const placeholder = document.getElementById('formPlaceholder');
+            
+            if (formLink && formLink.href.includes('YOUR_QI_PROJECTS_GOOGLE_FORM_URL')) {
+                formRedirect.style.display = 'none';
+                placeholder.style.display = 'block';
+            }
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
